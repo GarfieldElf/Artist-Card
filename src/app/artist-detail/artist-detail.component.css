@@ -1,0 +1,10 @@
+ .mat-mdc-raised-button.color-button { background-color: #FFCCCC; color: black; }
+
+ .mat-mdc-slider.mat-primary {  --mdc-slider-handle-color: wheat; --mdc-slider-focus-handle-color: wheat;
+                             --mdc-slider-active-track-color: white; --mdc-slider-inactive-track-color: white; }
+
+ .mat-toolbar.mat-primary {
+    background: #003366;
+    color: white;
+  }
+

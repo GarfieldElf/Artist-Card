@@ -1,0 +1,28 @@
+
+<mat-grid-list cols="1" rows="1" rowHeight="100%" style="background-color:#003366;" >
+  <mat-grid-tile>
+    <mat-card class="mat-mdc-elevation-specific mat-elevation-z8" *ngFor="let a of artists"
+      style= "
+      width:25%;
+      margin: 20px;
+      margin-bottom: 350px;
+      justify-content: center;
+      align-items: center;
+      background-color: #FFCCCC;
+      ">
+    <mat-card-header>
+    <img width="300" height="310" src="/assets/img/{{a.image}}" alt="{{a.image}}">
+    </mat-card-header>
+    
+    <mat-card-content style="text-align: center; justify-content: center;" >
+    <mat-card-title>{{a.name}}-{{a.music_genre}}</mat-card-title>
+    <p style="font-size: large; margin-bottom: 5px;">{{a.description | description}}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+    <button routerLink="/artists/{{a.id}}"  mat-raised-button>DETAILS</button>
+    </mat-card-actions>
+
+   </mat-card>
+  </mat-grid-tile>   
+</mat-grid-list>

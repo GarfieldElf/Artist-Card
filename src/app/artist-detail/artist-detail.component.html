@@ -1,0 +1,65 @@
+<div style="background-color:#FFCCCC; height: 100%; text-align: center; padding-top: 20px;">
+  
+                 <h1 style="color:#003366;">{{artist.name}}</h1>
+
+
+   <div style="display: flex; text-align:start; margin-left: 50px; align-items: start;">
+
+      <div>
+      <img class="mat-mdc-elevation-specific mat-elevation-z10" height="700" src="/assets/img/{{artist.image}}" alt="{{artist.name}}">
+     </div>
+
+
+     <div style="padding-left: 30px; padding-right: 30px;">
+
+        <mat-card  style="background-color:wheat; margin-bottom: 20px; padding: 20px; ">
+        <mat-card-title style="color: #003366;">{{artist.description}}</mat-card-title>
+        </mat-card> 
+    
+        <mat-toolbar style="justify-content: space-between;" color="primary" class="main-toolbar" >
+        <span> Featured songs of {{artist.name}}'s</span>
+        </mat-toolbar>
+
+        <ng-container style="margin-top: 20px;" *ngFor="let file of files" >
+        <li style="list-style-type: none; margin: 15px;" *ngIf="file.id === artist.id" (click)="openFile(file.link)">
+        <button style="width :100%; text-align:start; justify-content: start;" mat-button >
+        <mat-icon style="color: #003366;" mat-list-icon>music_note</mat-icon>
+        <span>{{file.title}}</span>
+        </button>
+        <mat-divider></mat-divider>
+        </li>
+        </ng-container>
+ 
+
+       <footer style="width: 100%; position: fixed; bottom: 0; left: 0; z-index: 9;">
+      
+        <mat-toolbar style="justify-content: center; height:100px; background-color: #003366;"  class="main-toolbar"  >
+
+             <!-- <button style="margin-left: 25px;"  mat-fab color="primary" (click)=" isplaying ? pause() : play()">
+              <mat-icon>{{ isplaying ? 'pause' : 'play_arrow'}}</mat-icon>
+             </button> -->
+
+         <button style="margin-left: 25px;"  mat-raised-button  class="color-button"  (click)="play()">Play</button>
+         <button style="margin-left: 25px;"  mat-raised-button  class="color-button"  (click)="pause()" >Pause</button>
+         <button style="margin-left: 25px;"  mat-raised-button  class="color-button"  (click)="stop()" >Stop</button>
+
+         <span style="margin-right: 10px; margin-left: 25px; color: white;">{{currentTime}}</span>
+         <mat-slider min="0"
+          max="{{ duration }}"
+          color="primary"
+         >
+        <input (input)="durationSlider($event)"  value="{{audioObj.readyState === 0 ? 0 : audioObj.currentTime }}"  matSliderThumb>
+        </mat-slider>
+        <span style="color: white;">{{ musicLength }}</span>
+  
+
+        <div style="margin-left: 25px;  margin-top:10px;"><mat-icon style="color: white;">volume_up</mat-icon></div>
+        <mat-slider   min="0" max="1" step="0.01" color="primary">
+        <input value="0.5"  (input)="setVolume($event)" matSliderThumb>
+        </mat-slider>
+
+      </mat-toolbar>
+    
+    </footer>
+
+</div>
